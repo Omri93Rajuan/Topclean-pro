@@ -26,7 +26,7 @@ const EditCardPage = () => {
   const { value, ...rest } = useForm(initialCardForm, cardSchema, () =>
     handleUpdateCard(card._id, {
       ...normalizeCard({ ...value.data }),
-      bizNumber: card.bizNumber,
+      isDone:card.isDone,
       user_id: card.user_id,
     })
   );

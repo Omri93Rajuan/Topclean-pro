@@ -1,4 +1,4 @@
-import { shape, string, number, arrayOf, oneOfType } from "prop-types";
+import { shape, string, number, arrayOf, oneOfType, bool } from "prop-types";
 import addressType from "./addressType";
 import imageType from "./imageType";
 
@@ -13,6 +13,7 @@ const cardType = shape({
   email: string.isRequired,
   user_id: string.isRequired,
   createdAt: string.isRequired,
+  isDone:bool.isRequired
 });
 
 export default cardType;

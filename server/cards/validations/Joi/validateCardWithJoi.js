@@ -19,6 +19,8 @@ const validateCardWithJoi = card => {
       .rule({ message: 'card "mail" mast be a valid mail' })
       .required(),
       role:Joi.string().min(2).max(1024).required(),
+      isDone: Joi.boolean().allow(""),
+      user_id: Joi.string().allow(""),
   });
   return schema.validate(card);
 };

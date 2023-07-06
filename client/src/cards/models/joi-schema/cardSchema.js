@@ -16,6 +16,7 @@ const cardSchema = {
     .ruleset.pattern(/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
     .rule({ message: 'card "mail" mast be a valid mail' })
     .required(),
+    isDone:Joi.bool()
   
 };
 
