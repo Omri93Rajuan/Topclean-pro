@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import useCards from "../hooks/useCards";
 import mapCardToModel from "../helpers/normalization/mapToModel";
 import Typography from "@mui/material/Typography";
-import { Avatar, Grid, Button, Input } from "@mui/material";
+import { Avatar, Grid, Button, Input, Checkbox } from "@mui/material";
 import { Box } from "@mui/system";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
@@ -21,14 +21,14 @@ const CardDetailsPage = () => {
   const [cardData, setCardData] = useState("");
   const { cardId } = useParams();
   const { handleGetCard, handleAdminNumber, value } = useCards();
-  const { isLoading, error, card, } = value;
+  const { isLoading, error, card } = value;
 
   useEffect(() => {
     handleGetCard(cardId).then((data) => {
       const modeledCard = mapCardToModel(data);
-      setCardData(modeledCard);      
+      setCardData(modeledCard);
     });
-
+    console.log(cardData);
   }, [cardId, handleGetCard]);
   return (
     <Container>
@@ -64,8 +64,7 @@ const CardDetailsPage = () => {
                 label="bizNumber"
                 type="number"
                 onChange={(e) => (cardData.bizNumber = e.target.value)}
-               placeholder={`${cardData.bizNumber}`}
-               
+                placeholder={`${cardData.bizNumber}`}
               />
               <Button
                 variant="text"
@@ -98,9 +97,10 @@ const CardDetailsPage = () => {
             </Grid>
             <Grid item xs={12} sm={6} md={3} align="center">
               <ComputerIcon fontSize="large" color="primary" />
-              <Typography variant="h5" color="-moz-initial">
-                {cardData.webUrl}
-              </Typography>
+              <Checkbox
+              disabled
+                checked = {cardData.isDone}
+              />
             </Grid>
             <Grid item xs={12} sm={6} md={3} align="center">
               <BusinessIcon fontSize="large" color="primary" />
@@ -108,7 +108,6 @@ const CardDetailsPage = () => {
                 {cardData.street}
               </Typography>
             </Grid>
-            
           </Grid>
         </>
       )}
