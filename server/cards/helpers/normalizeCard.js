@@ -13,7 +13,6 @@ const normalizeCard = async (rawCard, userId) => {
 
   const card ={
     ...rawCard,
-    isDone: rawCard.isDone,
     user_id: userId,
   };
   return card

@@ -6,7 +6,7 @@ const normalizeCard = (card) => {
     description: card.description,
     phone: card.phone,
     email: card.email,
-    isDone: card.isDone || false,
+    // isDone: card.isDone || false,
 
   };
 };

@@ -29,6 +29,10 @@ const cardSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  isDone: {
+    type: Boolean,
+    default:false
+  },
   user_id: {
     type: mongoose.Schema.Types.ObjectId,
   },
