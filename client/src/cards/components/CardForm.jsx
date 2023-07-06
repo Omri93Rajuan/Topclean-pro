@@ -22,7 +22,7 @@ const CardForm = ({
       title={title}>
       <Input
         name="company"
-        label="company"
+        label="חברה"
         error={errors.title}
         onChange={onInputChange}
         data={data}
@@ -30,7 +30,7 @@ const CardForm = ({
       />
       <Input
         name="title"
-        label="name"
+        label="שם"
         error={errors.subtitle}
         onChange={onInputChange}
         data={data}
@@ -46,7 +46,7 @@ const CardForm = ({
       />
       <Input
         name="description"
-        label="description"
+        label="תיאור הבעיה"
         error={errors.description}
         onChange={onInputChange}
         data={data}
@@ -54,7 +54,7 @@ const CardForm = ({
       />
       <Input
         name="phone"
-        label="phone"
+        label="טלפון"
         type="phone"
         error={errors.phone}
         onChange={onInputChange}
@@ -63,7 +63,7 @@ const CardForm = ({
       />
       <Input
         name="email"
-        label="email"
+        label="אימייל"
         type="email"
         error={errors.email}
         onChange={onInputChange}
