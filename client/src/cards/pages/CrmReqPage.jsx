@@ -11,7 +11,7 @@ import Req from "../components/Req";
 
 const CrmPage = () => {
   const { user } = useUser();
-  const { handleGetCards,handleDeleteCard, value } = useCards();
+  const { handleGetCards, handleDeleteCard,handleAdminUpdate, value } = useCards();
   const { error, isLoading, cards } = value;
   const navigate = useNavigate();
 
@@ -25,11 +25,10 @@ const CrmPage = () => {
     await handleGetCards();
   };
 
-//   const onUpdateUser = async (userId) => {
-//     await handleChangeBusinessStatus(userId,user);
-//     await handleGetUsers();
-//   };
-
+  //   const onUpdateUser = async (userId) => {
+  //     await handleChangeBusinessStatus(userId,user);
+  //     await handleGetUsers();
+  //   };
 
   return (
     <Container>
@@ -39,17 +38,20 @@ const CrmPage = () => {
       />
       {isLoading && <Spinner />}
       {error && <Error errorMessage={error} />}
-      {!cards && (
-        <Typography>אופס... נראה שאין נתונים להציג</Typography>
-      )}
+      {!cards && <Typography>אופס... נראה שאין נתונים להציג</Typography>}
       {cards && (
         <Req
           cards={cards}
-          onDelete={(parmas) => (id) =>{
-             onDeleteCard(parmas.id)}
-          }
-          onChangeStatus={(parmas) => (id) => {
-            // onUpdateUser(parmas.id);
+          onDelete={(parmas) => (id) => {
+            onDeleteCard(parmas.id);
+          }}
+          onChangeStatus={(parmas) => async (id) => {
+             parmas.row.isDone = !parmas.row.isDone 
+             await handleAdminUpdate(parmas.id,parmas.row)
+            console.log(parmas);
+            await handleGetCards();
+
+            ;
           }}
         />
       )}

@@ -53,11 +53,11 @@ const navigate = useNavigate()
     return {
       id: card._id,
       idNumber: i + 1,
-      name: card.subtitle,
-      company: card.title,
+      name: card.title,
+      company: card.company,
       email: card.email,
       phone: card.phone,
-      isAdmin: card.isDone,
+      isDone: card.isDone,
     };
   });
 

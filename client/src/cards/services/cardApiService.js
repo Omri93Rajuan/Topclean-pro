@@ -68,10 +68,10 @@ export const changeLikeStatus = async (cardId,normalaizedCard) => {
   }
 };
 
-export const adminNumber = async (cardId,normalaizedCard) => {
+export const adminUpdate = async (cardId,normalaizedCard) => {
   try {
     const { data } = await axios.patch(
-      `${apiUrl}/cards/adminNumber/${cardId}`,
+      `${apiUrl}/cards/adminUpdate/${cardId}`,
       normalaizedCard
     );
     return data;

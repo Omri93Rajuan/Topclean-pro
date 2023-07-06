@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo, useEffect } from "react";
 import {
-  adminNumber,
+  adminUpdate,
   changeLikeStatus,
   createCard,
   deleteCard,
@@ -142,11 +142,11 @@ useAxios();
     }
   }, [cards]);
 
-  const handleAdminNumber = useCallback(async (cardId, cardFromClient) => {
+  const handleAdminUpdate= useCallback(async (cardId, cardFromClient) => {
     try {
       setLoading(true);
       const normalizedCard = normalizeCard(cardFromClient);
-      const card = await adminNumber(cardId, normalizedCard);
+      const card = await adminUpdate(cardId, normalizedCard);
       requestStatus(false, null, cards, card);
       snack("success", "The business card has been successfully updated");
     } catch (error) {
@@ -170,7 +170,7 @@ useAxios();
     handleUpdateCard,
     handleLikeCard,
     handleGetFavCards,
-    handleAdminNumber
+    handleAdminUpdate
     
   };
 };

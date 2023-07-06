@@ -11,7 +11,7 @@ const {
   likeCard,
   deleteCard,
   getMyLikesCards,
-  adminNumber,
+  adminUpdate,
 } = require("../models/cardsAccessDataService");
 const validateCard = require("../validations/cardValidationService");
 const router = express.Router();
@@ -118,11 +118,11 @@ router.patch("/:id",auth, async (req, res) => {
     return handleError(res, error.status || 500, error.message);
   }
 });
-router.patch("/adminNumber/:id",auth, async (req, res) => {
+router.patch("/adminUpdate/:id",auth, async (req, res) => {
   try {
     const cardId = req.params.id;
     const {_id,isAdmin} = req.user
-  const {bizNumber} = req.body
+  const {isDone} = req.body
 if(!isAdmin)
 return handleError(
   res,
@@ -131,7 +131,7 @@ return handleError(
 
 );
 
- const card = await adminNumber(cardId, _id ,bizNumber);
+ const card = await adminUpdate(cardId, _id ,isDone);
     return res.send(card);
   } catch (error) {
     return handleError(res, error.status || 500, error.message);

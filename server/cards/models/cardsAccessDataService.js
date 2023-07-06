@@ -134,7 +134,7 @@ const deleteCard = async (id) => {
   }
   return Promise.resolve("card deleted not in mongodb");
 };
-const adminNumber = async (cardId, normalizedCard, newBizNumber) => {
+const adminUpdate = async (cardId, normalizedCard, newIsDone) => {
   if (DB === "MONGODB") {
     try {
       let card = await Card.findByIdAndUpdate(cardId, normalizedCard, {
@@ -143,10 +143,7 @@ const adminNumber = async (cardId, normalizedCard, newBizNumber) => {
       if (!card)
         throw new Error("A card with this ID cannot be found in the database");
       const cards = await Card.find({});
-      card.bizNumber = newBizNumber;
-      if (cards.find((cards) => cards.bizNumber === card.bizNumber))
-        throw new Error("please find a new uniq number");
-
+      card.isDone = newIsDone;
       card = await card.save();
       return Promise.resolve(card);
     } catch (error) {
@@ -165,4 +162,4 @@ exports.updateCard = updateCard;
 exports.likeCard = likeCard;
 exports.deleteCard = deleteCard;
 exports.getMyLikesCards = getMyLikesCards;
-exports.adminNumber = adminNumber;
+exports.adminUpdate = adminUpdate;

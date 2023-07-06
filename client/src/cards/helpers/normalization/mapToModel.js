@@ -6,6 +6,7 @@ const mapCardToModel = (card) => {
     description: card.description,
     phone: card.phone,
     email: card.email,
+    isDone: card.isDone
    
   };
 };
